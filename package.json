@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.10.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-redux": "^5.1.1",
     "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
     "styled-components": "^4.0.3"
   },
   "scripts": {
