@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Icon } from 'antd';
-import { HeaderWapper, Logo, Nav, NavItem, SearchWrapper, NavSearch, SearchIcon, Button, Addition } from './style';
+import { HeaderWapper, Logo, Nav, NavItem, SearchWrapper, NavSearch, Button, Addition } from './style';
 import 'antd/dist/antd.css';
+import {actions} from './store';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -52,11 +52,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleInputFocus() {
-            dispatch({ type: "handle_focus" })
+            dispatch(actions.SEARCH_FOCUSED())
         },
         handleInputBlur() {
-            console.log("222")
-            dispatch({ type: "handle_blur" })
+            dispatch(actions.SEARCH_BLUR())
         }
     }
 }
