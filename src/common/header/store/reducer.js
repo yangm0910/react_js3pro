@@ -1,6 +1,4 @@
 import { consts } from './';
-
-
 const defaultState = {
     focused: false
 }

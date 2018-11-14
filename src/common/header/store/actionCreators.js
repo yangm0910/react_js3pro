@@ -1,4 +1,3 @@
-
 export const SEARCH_FOCUSED = () =>({
     type: "header/handle_focus"
 })
