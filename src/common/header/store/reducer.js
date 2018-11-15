@@ -1,4 +1,6 @@
 import { consts } from './';
+// import { fromJS} from './immutable';
+
 const defaultState = {
     focused: false
 }
