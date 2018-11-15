@@ -1,7 +1,25 @@
+import { consts } from './';
+import axios from 'axios';
+import { fromJS } from 'immutable';
+
 export const SEARCH_FOCUSED = () =>({
-    type: "header/handle_focus"
+    type: consts.handle_focus
 })
 
 export const SEARCH_BLUR = () => ({
-    type: "header/handle_blur"
+    type: consts.handle_blur
 })
+const GET_SEARCH_LIST_ACTION = (data) => ({
+    type: consts.get_search_list,
+    data
+})
+export const GET_SEARCH_LIST = () => {
+    return (dispatch) => {
+        axios.get("/api/header/getSearchList.json")
+        .then(function(res){
+            const data = res.data.data; 
+            dispatch(GET_SEARCH_LIST_ACTION(fromJS(data)))
+        })
+        .catch()
+    }
+}
