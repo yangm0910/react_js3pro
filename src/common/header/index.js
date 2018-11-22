@@ -11,33 +11,39 @@ import {
 
 class Header extends Component {
 
-    
+
     getSearchInfoList = () => {
+        const { focused, handleInputFocus, totalPage, nowPage, list, handleInputBlur } = this.props;
+        const newList = list.toJS();
+        const searchList = [];
+        for (let i = (nowPage - 1) * 10; i < nowPage * 10; i++) {
+            searchList.push(
+                <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+            )
+
+        }
         if (this.props.focused) {
             return (
-           
+
                 <SearchInfo>
                     <SearchInfoTitle>热门搜索
                         <SearchInfoSwitch>换一批</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoContent>
-                        {this.props.list.map(item => <SearchInfoItem key={item}>{item}</SearchInfoItem> )}
+                        {searchList}
                     </SearchInfoContent>
                 </SearchInfo>
-        )
+            )
         }
-        
+
     }
 
     render() {
-        debugger
-        // const Header = (props) => {
-            console.log(this.props.list);
-        const { focused, handleInputFocus, handleInputBlur } = this.props;
-        console.log(focused);
+        const { focused, handleInputFocus, totalPage, list, handleInputBlur } = this.props;
+        console.log("totalPage:" + totalPage);
 
-        
-    
+
+
 
         return (
             <HeaderWapper>
@@ -56,7 +62,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className={focused ? 'focused' : ''}
-                                onFocus={handleInputFocus}
+                                onFocus={handleInputFocus(list)}
                                 onBlur={handleInputBlur}
                             ></NavSearch>
                         </CSSTransition>
@@ -77,14 +83,16 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         focused: state.getIn(['header', 'focused']),
-        list: state.getIn(['header', 'list'])
+        list: state.getIn(['header', 'list']),
+        totalPage: state.getIn(['header', 'totalPage']),
+        nowPage: state.getIn(['header', 'nowPage']),
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleInputFocus() {
-            dispatch(actions.GET_SEARCH_LIST())
+        handleInputFocus(list) {
+            (list.size === 0) && (dispatch(actions.GET_SEARCH_LIST()))
             dispatch(actions.SEARCH_FOCUSED())
         },
         handleInputBlur() {

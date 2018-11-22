@@ -3,7 +3,9 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
     focused: false,
-    list: []
+    list: [],
+    nowPage: 1,
+    totalPage: 1
 })
 export default  (state = defaultState, action) =>{
     const type = action.type;
@@ -15,7 +17,11 @@ export default  (state = defaultState, action) =>{
             return state.set('focused', false);
 
         case consts.get_search_list:
-            return state.set('list', action.data);   // 由于list是immutable对象，所以action.data也不许是immutable
+            //
+            return state.merge({
+                list: action.data,
+                totalPage: action.totalPage
+            });   // 由于list是immutable对象，所以action.data也不许是immutable
         default:
             return defaultState
     }

@@ -11,14 +11,15 @@ export const SEARCH_BLUR = () => ({
 })
 const GET_SEARCH_LIST_ACTION = (data) => ({
     type: consts.get_search_list,
-    data
+    data: fromJS(data),
+    totalPage: Math.ceil(data.length / 10)
 })
 export const GET_SEARCH_LIST = () => {
     return (dispatch) => {
         axios.get("/api/header/getSearchList.json")
         .then(function(res){
             const data = res.data.data; 
-            dispatch(GET_SEARCH_LIST_ACTION(fromJS(data)))
+            dispatch(GET_SEARCH_LIST_ACTION(data))
         })
         .catch()
     }
