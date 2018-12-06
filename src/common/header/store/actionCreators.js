@@ -24,3 +24,7 @@ export const GET_SEARCH_LIST = () => {
         .catch()
     }
 }
+export const NEXT_PAGE = (nowPage) => ({
+    type: consts.get_next_page,
+    nowPage: fromJS(++nowPage)
+})

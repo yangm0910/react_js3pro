@@ -13,7 +13,7 @@ class Header extends Component {
 
 
     getSearchInfoList = () => {
-        const { focused, handleInputFocus, totalPage, nowPage, list, handleInputBlur } = this.props;
+        const { focused, handleNextPage, totalPage, nowPage, list, handleInputBlur } = this.props;
         const newList = list.toJS();
         const searchList = [];
         for (let i = (nowPage - 1) * 10; i < nowPage * 10; i++) {
@@ -22,12 +22,13 @@ class Header extends Component {
             )
 
         }
-        if (this.props.focused) {
+        debugger
+        if (focused) {
             return (
 
                 <SearchInfo>
                     <SearchInfoTitle>热门搜索
-                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch onClick={() => handleNextPage(nowPage)} >换一批</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoContent>
                         {searchList}
@@ -40,10 +41,6 @@ class Header extends Component {
 
     render() {
         const { focused, handleInputFocus, totalPage, list, handleInputBlur } = this.props;
-        console.log("totalPage:" + totalPage);
-
-
-
 
         return (
             <HeaderWapper>
@@ -62,7 +59,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className={focused ? 'focused' : ''}
-                                onFocus={handleInputFocus(list)}
+                                onFocus={()=>handleInputFocus(list)}
                                 onBlur={handleInputBlur}
                             ></NavSearch>
                         </CSSTransition>
@@ -97,7 +94,13 @@ const mapDispatchToProps = (dispatch) => {
         },
         handleInputBlur() {
             dispatch(actions.SEARCH_BLUR())
+        },
+        handleNextPage(nowPage){
+            debugger
+            dispatch(actions.NEXT_PAGE(nowPage))
         }
+
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

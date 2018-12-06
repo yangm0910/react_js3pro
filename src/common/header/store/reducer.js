@@ -7,7 +7,7 @@ const defaultState = fromJS({
     nowPage: 1,
     totalPage: 1
 })
-export default  (state = defaultState, action) =>{
+export default (state = defaultState, action) => {
     const type = action.type;
     switch (type) {
         case consts.handle_focus:
@@ -16,8 +16,10 @@ export default  (state = defaultState, action) =>{
         case consts.handle_blur:
             return state.set('focused', false);
 
+        case consts.get_next_page:
+            return state.set("nowPage", action.nowPage);
+            
         case consts.get_search_list:
-            //
             return state.merge({
                 list: action.data,
                 totalPage: action.totalPage
