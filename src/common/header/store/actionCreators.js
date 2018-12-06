@@ -9,6 +9,13 @@ export const SEARCH_FOCUSED = () =>({
 export const SEARCH_BLUR = () => ({
     type: consts.handle_blur
 })
+export const MOUSE_IN = () =>({
+    type: consts.handle_mouseIn
+})
+
+export const MOUSE_LEAVE = () => ({
+    type: consts.handle_mouseLeave
+})
 const GET_SEARCH_LIST_ACTION = (data) => ({
     type: consts.get_search_list,
     data: fromJS(data),
@@ -26,5 +33,5 @@ export const GET_SEARCH_LIST = () => {
 }
 export const NEXT_PAGE = (nowPage) => ({
     type: consts.get_next_page,
-    nowPage: fromJS(++nowPage)
+    nowPage: fromJS(nowPage)
 })

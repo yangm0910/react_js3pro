@@ -13,22 +13,25 @@ class Header extends Component {
 
 
     getSearchInfoList = () => {
-        const { focused, handleNextPage, totalPage, nowPage, list, handleInputBlur } = this.props;
+        const { focused, mouseIn, handleNextPage, totalPage, handleMouseLeave, handleMouseIn,nowPage, list, handleInputBlur } = this.props;
         const newList = list.toJS();
         const searchList = [];
-        for (let i = (nowPage - 1) * 10; i < nowPage * 10; i++) {
+        console.log("nowPage："+nowPage)
+        
+        for (let i = (nowPage - 1) * 10; i < nowPage * 10 && i<newList.length; i++) {
+        // console.log("newList["+i+"]"+newList[i])
             searchList.push(
                 <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
             )
 
         }
-        debugger
-        if (focused) {
+        if (focused || mouseIn) {
             return (
-
-                <SearchInfo>
+                <SearchInfo
+                    onMouseEnter={handleMouseIn}
+                    onMouseLeave={handleMouseLeave}>
                     <SearchInfoTitle>热门搜索
-                        <SearchInfoSwitch onClick={() => handleNextPage(nowPage)} >换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch onClick={() => handleNextPage(nowPage, totalPage)} >换一批</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoContent>
                         {searchList}
@@ -80,6 +83,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         focused: state.getIn(['header', 'focused']),
+        mouseIn:  state.getIn(['header', 'mouseIn']),
         list: state.getIn(['header', 'list']),
         totalPage: state.getIn(['header', 'totalPage']),
         nowPage: state.getIn(['header', 'nowPage']),
@@ -95,9 +99,19 @@ const mapDispatchToProps = (dispatch) => {
         handleInputBlur() {
             dispatch(actions.SEARCH_BLUR())
         },
-        handleNextPage(nowPage){
-            debugger
-            dispatch(actions.NEXT_PAGE(nowPage))
+        handleNextPage(nowPage, totalPage){
+            if(nowPage<totalPage){
+                dispatch(actions.NEXT_PAGE(nowPage+1))
+            }
+            else{
+                dispatch(actions.NEXT_PAGE(1))
+            }
+        },
+        handleMouseIn(){
+            dispatch(actions.MOUSE_IN())
+        },
+        handleMouseLeave(){
+            dispatch(actions.MOUSE_LEAVE())
         }
 
 
