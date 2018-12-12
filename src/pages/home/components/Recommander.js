@@ -1,5 +1,4 @@
 import React , { Component } from 'react';
-import { List } from 'antd';
 import {RecommanderStyle} from '../style'
 
 class Recommander extends Component {

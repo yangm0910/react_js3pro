@@ -10,7 +10,6 @@ export const HomeWrapper = styled.div`
 
 `
 export const HomeLeft = styled.div`
-    background: red;
     float: left;
     padding-top: 30px;
     padding-right: 0;
@@ -22,18 +21,36 @@ export const HomeLeft = styled.div`
     }
 `
 export const ListWrapperStyle = styled.div`
-    background: red;
 `
 export const HomeRight = styled.div`
     float: right;
-    background: green;
 `
 export const TopicStyle = styled.div`
-    background: red;
+    overflow: hidden;
+    margin: 18px auto;
+    margin-left: -18px;
+
 `
+export const TopicItem = styled.div`
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 18px;
+    text-align: center;
+    padding-right: 10px;
+    border-radius:4px;
+    border: 1px solid #dcdcdc;
+    .topicImg{
+		float: left;
+        margin-right: 10px;
+        width:32px;
+        height:32px;
+    }
+
+
+`
+
 export const RecommanderStyle = styled.div`
-    background: red;
 `
 export const WritterStyle = styled.div`
-    background: red;
 `  

@@ -13,7 +13,7 @@ class Header extends Component {
 
 
     getSearchInfoList = () => {
-        const { focused, mouseIn, handleNextPage, totalPage, handleMouseLeave, handleMouseIn,nowPage, list, handleInputBlur } = this.props;
+        const { focused, mouseIn, handleNextPage, totalPage, handleMouseLeave, handleMouseIn,nowPage, list } = this.props;
         const newList = list.toJS();
         const searchList = [];
         console.log("nowPage："+nowPage)
@@ -43,7 +43,7 @@ class Header extends Component {
     }
 
     render() {
-        const { focused, handleInputFocus, totalPage, list, handleInputBlur } = this.props;
+        const { focused, handleInputFocus, list, handleInputBlur } = this.props;
 
         return (
             <HeaderWapper>
