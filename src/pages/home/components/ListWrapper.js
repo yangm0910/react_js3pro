@@ -1,13 +1,35 @@
-import React , { Component } from 'react';
-import {ListWrapperStyle} from '../style';
+import React, { Component } from 'react';
+import { ListWrapperStyle, ListItem, ListInfo } from '../style';
+import { connect } from 'react-redux';
+
+const stateToProps = (state) => {
+    return {
+        articleList: state.getIn(["home", "articleList"])
+    }
+
+}
 class ListWrapper extends Component {
 
-    render () {
+    render() {
+        const { articleList } = this.props;
         return (
-            <ListWrapperStyle>List</ListWrapperStyle>
+            <ListWrapperStyle>
+                {
+                    articleList.map(item => (
+                        <ListItem key={item.get("id")}>
+                            <img className="pic" alt="22" src={item.get("imgUrl") }/>
+                            <ListInfo>
+                                <h3 ><a className="title" target="_blank" href="/p/303bb733e96e">{item.get("title")}</a></h3>
+                                <p className="description">{item.get("info")}</p>
+                            </ListInfo>
+                        </ListItem>
+                    ))
+                }
+
+            </ListWrapperStyle>
         )
     }
 
 }
 
-export default ListWrapper;
+export default connect(stateToProps, null)(ListWrapper);

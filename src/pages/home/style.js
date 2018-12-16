@@ -22,6 +22,30 @@ export const HomeLeft = styled.div`
 `
 export const ListWrapperStyle = styled.div`
 `
+export const ListItem = styled.div`
+    overfloat: hidden;
+    padding: 20px 0px;
+    border-bottom: 1px solid #dcdcdc;
+    .pic{
+        display:block;
+        width:125px;
+        margin-top: 15px;
+        vertical-align:middle;
+        float: right;
+        border-radius: 4px;
+    }
+`
+export const ListInfo = styled.div`
+    width: 500px;
+    .title{
+        font-size:18px;
+        font-weight:700;
+        display: inherit;
+        line-height: 1.5;
+        color:#333
+    }
+`
+
 export const HomeRight = styled.div`
     float: right;
 `
@@ -29,6 +53,8 @@ export const TopicStyle = styled.div`
     overflow: hidden;
     margin: 18px auto;
     margin-left: -18px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #dcdcdc;
 
 `
 export const TopicItem = styled.div`
@@ -51,6 +77,10 @@ export const TopicItem = styled.div`
 `
 
 export const RecommanderStyle = styled.div`
+    overflow: hidden;
+
 `
 export const WritterStyle = styled.div`
+    overflow: hidden;
+
 `  
