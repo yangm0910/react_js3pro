@@ -10,6 +10,13 @@ const defaultState = fromJS({
         imgUrl: "//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
         topicName: "热门主题2"
     }],
+    recommandList: [{
+        id: 1,
+        imgUrl: "http://cdn2.jianshu.io/assets/web/banner-s-3-7123fd94750759acf7eca05b871e9d17.png",
+    }, {
+        id: 2,
+        imgUrl: "http://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png",
+    }],
     articleList: [{
         id: 1,
         imgUrl: "//upload-images.jianshu.io/upload_images/2321684-8fbaab9227c9a3c7?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",

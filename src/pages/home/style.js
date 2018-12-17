@@ -77,10 +77,17 @@ export const TopicItem = styled.div`
 `
 
 export const RecommanderStyle = styled.div`
-    overflow: hidden;
-
+    width: 280px;
+    padding: 30px 0 0;
+`
+export const RecommandItem = styled.div`    
+    width: 280px;
+    height: 50px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    background: url(${props => (props.imgUrl)});
+    background-size: contain;
 `
 export const WritterStyle = styled.div`
-    overflow: hidden;
 
 `  
