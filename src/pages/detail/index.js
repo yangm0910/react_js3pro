@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import "./index.less";
 
 class Detail extends Component {
 
     render () {
         return (
-            <div>Detail</div>
+            <div className="detail-main">Detail</div>
         )
     }
 }

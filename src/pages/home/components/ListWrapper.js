@@ -19,7 +19,7 @@ class ListWrapper extends Component {
                         <ListItem key={item.get("id")}>
                             <img className="pic" alt="22" src={item.get("imgUrl") }/>
                             <ListInfo>
-                                <h3 ><a className="title" target="_blank" href="/p/303bb733e96e">{item.get("title")}</a></h3>
+                                <h3 ><a className="title" href="/detail">{item.get("title")}</a></h3>
                                 <p className="description">{item.get("info")}</p>
                             </ListInfo>
                         </ListItem>
