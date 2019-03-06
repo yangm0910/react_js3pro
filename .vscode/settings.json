@@ -1,0 +1,4 @@
+{
+    "git.ignoreLegacyWarning": true,
+    "javascript.implicitProjectConfig.experimentalDecorators": true
+}

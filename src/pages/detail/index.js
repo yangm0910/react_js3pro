@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./index.scss";
 import BraftEditor from "braft-editor";
 import "braft-editor/dist/index.css";
+import ControlInput from "../../common/hoc/controlledInput";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 
 class Detail extends Component {
@@ -43,26 +44,26 @@ class Detail extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="detail-main">
+      <ControlInput value={"aaa"} eventOnChange={()=>{console.log("aaa")}}/>
+
         <div className="detail-title">
-          <Form.Item>
-            {getFieldDecorator("title", {
-              rules: [
-                { required: true, message: "Please input your title!" }
-              ]
-            })(
-              <Input
-                placeholder="title"
-              />
-            )}
-          </Form.Item>
+          <div className="title">
+            <Form.Item>
+              {getFieldDecorator("title", {
+                rules: [{ required: true, message: " " }]
+              })(<Input style={{ float: "left" }} placeholder="title" />)}
+            </Form.Item>
+          </div>
+          <Button className="saveBtn" style={{ float: "right" }} type="primary">
+            Save
+          </Button>
         </div>
         <div className="detail-content">
           <div className="editor-wrapper">
             <BraftEditor value={editorState} onChange={this.handleChange} />
           </div>
-          {/* <h5>输出内容</h5>
-        <div className="output-content">{outputHTML}</div> */}
         </div>
+
       </div>
     );
   }

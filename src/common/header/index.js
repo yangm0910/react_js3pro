@@ -47,7 +47,7 @@ class Header extends Component {
 
         return (
             <HeaderWapper>
-                <a href="/"><Logo /></a>
+                <Logo />
                 <Nav>
                     <NavItem className="float-left active">首页</NavItem>
                     <NavItem className="float-left">下载app</NavItem>
